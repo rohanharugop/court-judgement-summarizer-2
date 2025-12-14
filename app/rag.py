@@ -17,15 +17,15 @@ index = pc.Index(PINECONE_INDEX)
 client = Groq(api_key=GROQ_API_KEY)
 
 def retrieve_precedents(query: str, top_k: int = 5):
-    # Generate embedding using Groq
+    # Generate embedding using Groq (SUPPORTED MODEL)
     embedding_response = client.embeddings.create(
-        model="text-embedding-3-small",
+        model="nomic-embed-text",
         input=query
     )
 
     embedding = embedding_response.data[0].embedding
 
-    # Query Pinecone with vector
+    # Query Pinecone
     response = index.query(
         vector=embedding,
         top_k=top_k,
@@ -39,6 +39,7 @@ def retrieve_precedents(query: str, top_k: int = 5):
         }
         for match in response["matches"]
     ]
+
 
 
 
