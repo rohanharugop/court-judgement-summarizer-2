@@ -1,9 +1,8 @@
 fastapi
 uvicorn
-faiss-cpu
 sentence-transformers
 python-dotenv
 groq
 pydantic
-pinecone-client
+pinecone
 
