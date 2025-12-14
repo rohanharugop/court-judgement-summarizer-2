@@ -17,8 +17,14 @@ index = pc.Index(PINECONE_INDEX)
 client = Groq(api_key=GROQ_API_KEY)
 
 def retrieve_precedents(query: str, top_k: int = 5):
+    # Use Pinecone hosted embedding inference
+    embedding = pc.inference.embed(
+        model="multilingual-e5-small",
+        inputs=[query]
+    )[0]["values"]
+
     response = index.query(
-        text=query,
+        vector=embedding,
         top_k=top_k,
         include_metadata=True
     )
