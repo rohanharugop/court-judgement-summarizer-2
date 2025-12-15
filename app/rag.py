@@ -1,14 +1,19 @@
 import os
+from dotenv import load_dotenv
 from pinecone import Pinecone
 from groq import Groq
 
+# ✅ LOAD ENV FIRST
+load_dotenv()
+
 # =========================
-# Clients
+# Init Clients
 # =========================
 pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 index = pc.Index(os.getenv("PINECONE_INDEX"))
 
 groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+
 
 # =========================
 # Retrieve Precedents
