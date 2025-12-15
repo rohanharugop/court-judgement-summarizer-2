@@ -57,6 +57,7 @@ You are a legal research assistant.
 • If the query is legal → explain using ONLY the provided precedents.
 • Do NOT hallucinate cases.
 • Keep response structured and concise.
+• Answer with markdown formatting, including bullet points and headings where appropriate.
 """
 
     response = groq_client.chat.completions.create(
